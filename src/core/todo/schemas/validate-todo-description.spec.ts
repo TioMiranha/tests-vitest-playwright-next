@@ -9,6 +9,7 @@ describe('validateTodoDescription (unit)', () => {
     ]);
     expect(result.sucsses).toBe(false);
   });
+
   test('deve retornar sucesso quando a descrição tem mais de 3 caracteres', () => {
     const description = 'abcd';
     const result = validateTodoDescription(description);

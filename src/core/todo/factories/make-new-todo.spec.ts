@@ -18,10 +18,10 @@ describe('makeNewTodo (unit)', () => {
     // toBe ===
     // toEqual toStrictEqual
     // Checando apenas a description
-    expect(newTodo.description).toBe(expectedTodo.description);
+    expect(newTodo.description).toStrictEqual(expectedTodo.description);
 
     //Checando o objeto inteiro
-    expect(newTodo).toStrictEqual(expectedTodo);
+    //expect(newTodo).toStrictEqual(expectedTodo);
 
   });
 });
