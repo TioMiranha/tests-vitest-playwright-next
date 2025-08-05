@@ -1,5 +1,6 @@
+import { makeValidateTodo } from "./make-validated-todo";
+import { InvalidTodo, ValidTodo } from "../schemas/todo.contract";
 import * as sanitizeStrMod from "@/utils/sanitize-str";
-import { InvalidTodo, makeValidateTodo, ValidTodo } from "./make-validated-todo";
 import * as makeNewTodoMod from "./make-new-todo";
 import * as validateTodoDescriptionMod from "../schemas/validate-todo-description";
 
@@ -33,9 +34,9 @@ describe('makeValidatedTodo (unit)', () => {
 
     expect(result.success).toBe(true);
 
-    expect(result.data.id).toBe('any-id');
-    expect(result.data.description).toBe('vasco');
-    expect(result.data.createdAt).toMatch('any-date');
+    expect(result.todo.id).toBe('any-id');
+    expect(result.todo.description).toBe('vasco');
+    expect(result.todo.createdAt).toMatch('any-date');
   });
 
   test('deve chamar validatedDescription.error se a validação falhou', () => {
