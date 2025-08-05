@@ -11,6 +11,10 @@
     "source.fixAll.eslint": "explicit"
   },
 
+  "code-runner.executorMap": {
+    "typescript": "npx dotenv -e .env.development -- tsx"
+  },
+
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
