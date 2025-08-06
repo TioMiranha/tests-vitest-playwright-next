@@ -1,6 +1,10 @@
+import { join } from 'path';
+
 const commonKeys = {
-  drizzleSchemaFiles: ['src/core/todo/schemas/drizzle-todo-table.schema.ts'],
-  drizzleMigrationsFolder: 'src/db/drizzle/migrations',
+  drizzleSchemaFiles: [
+    join('src', 'core', 'todo', 'schemas', 'drizzle-todo-table.schema.ts'),
+  ],
+  drizzleMigrationsFolder: join('src', 'db', 'drizzle', 'migrations'),
 };
 
 const envConfigs = {
@@ -33,7 +37,6 @@ type ConfigsByEnv = {
 
 type EnvConfigs = typeof envConfigs;
 type AllowedEnvKeys = keyof EnvConfigs;
-
 
 function isValidEnv(env: string): env is AllowedEnvKeys {
   return Object.keys(envConfigs).includes(env);
