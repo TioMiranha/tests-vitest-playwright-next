@@ -1,5 +1,5 @@
 import { makeTestTodoMocks } from "@/core/__tests__/utils/make-test-todo-mocks";
-import { createTodoAction } from "./create-todo.action";
+import { deleteTodoAction } from "./delete-todo.action";
 
 vi.mock('next/cache', () => {
   return {
@@ -7,13 +7,13 @@ vi.mock('next/cache', () => {
   };
 });
 
-describe('createTodoAction (unit)', () => {
-  test('should return the createTodoUseCase with correctly values', async () => {
-    const { createTodoUseCaseSpy } = makeTestTodoMocks();
+describe('deleteTodoAction (unit)', () => {
+  test('should return the deleteTodoUseCase with correctly values', async () => {
+    const { deleteTodoUseCaseSpy } = makeTestTodoMocks();
     const expectedParamCall = 'Usecase should be called with this';
-    await createTodoAction(expectedParamCall);
+    await deleteTodoAction(expectedParamCall);
 
-    expect(createTodoUseCaseSpy).toHaveBeenCalledExactlyOnceWith(
+    expect(deleteTodoUseCaseSpy).toHaveBeenCalledExactlyOnceWith(
       expectedParamCall,
     );
   });
@@ -21,7 +21,7 @@ describe('createTodoAction (unit)', () => {
   test('should return the revalidatePath if the usecase returns success', async () => {
     const { revalidatePathMocked } = makeTestTodoMocks();
     const description = 'Usecase should be called with this';
-    await createTodoAction(description);
+    await deleteTodoAction(description);
 
     expect(revalidatePathMocked).toHaveBeenCalledExactlyOnceWith(
       '/',
@@ -31,17 +31,17 @@ describe('createTodoAction (unit)', () => {
   test('should return the same value from usecase  on success ', async () => {
     const { successResult } = makeTestTodoMocks();
     const description = 'Usecase should be called with this';
-    const result = await createTodoAction(description);
+    const result = await deleteTodoAction(description);
 
     expect(result).toStrictEqual(successResult);
   });
 
   test('should return the same value from usecase on error ', async () => {
-    const { createTodoUseCaseSpy, errorResult } = makeTestTodoMocks();
+    const { deleteTodoUseCaseSpy, errorResult } = makeTestTodoMocks();
 
-    createTodoUseCaseSpy.mockResolvedValue(errorResult);
+    deleteTodoUseCaseSpy.mockResolvedValue(errorResult);
     const description = 'Usecase should be called with this';
-    const result = await createTodoAction(description);
+    const result = await deleteTodoAction(description);
 
     expect(result).toStrictEqual(errorResult);
   });
